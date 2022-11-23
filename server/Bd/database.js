@@ -3,7 +3,7 @@ export const sqlConfig = {
     port: 1433,
     user: 'sa',
     password: 'Admin2018@', //password: 'Admin2018@',
-    database: 'pannet_tcc2', 
+    database: 'pannet', 
     options: {
       enableArithAbort : true,
       encrypt: false,
@@ -15,5 +15,4 @@ export const sqlConfig = {
       min: 0,
       idleTimeoutMillis: 30000
     },
-  
 }

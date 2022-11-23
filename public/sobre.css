@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+*{
+    padding: 0 auto;
+    margin: 0 auto;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+header{
+    background: rgb(14, 14, 14);
+    border-top: 5px solid #f26202;
+    border-bottom:5px solid #f26202;
+    height: 10vh;
+    
+    display: flex;
+}
+main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #3c3c3c;
+}
+main img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+#logo{
+    width: 60px; height: auto;
+}
+#container_logo{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+    color: #eeeeee;
+}
+#container_logo h1{
+    font-family: 'Didact Gothic', sans-serif;
+    margin-left: .3rem;
+}
+.sub-container{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.igor{
+    justify-content: center;
+}
+#container{
+    min-width: 50%;
+    max-width: 90%;
+    border-radius: 10px;
+    border: 1px solid #f26202;
+    align-content: center;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #202020;
+}
+#container h2{
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #f26202;
+    border-bottom: 1px solid #f26202;
+}
+.texto{
+    margin: .5rem;
+    
+}
+h3{
+    color: #f26202;
+}
+p{
+    color: #eeee;
+}
+.card{
+    display: flex;
+    align-items: center;
+    width: 45%;
+    padding: .5rem;
+    margin: 1rem .3rem .3rem 1rem;
+    background-color: rgb(14, 14, 14);
+    border-radius: 5px;
+}
+@media (max-width:700px) {
+    .sub-container{
+        flex-direction: column;
+        width: 100%;
+    }
+    .card{
+        width: 100% !important; 
+        margin: 0 auto;
+    }
+}

@@ -5,19 +5,33 @@
   font-family: sans-serif;
   color: #262626;
 }
+body{
+  background: rgb(87,39,0);
+  background: linear-gradient(180deg, rgba(87,39,0,1) 0%, rgba(255,113,0,1) 100%);
+}
 header{
-    height: 10vh;
-    background: black;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+header span{
+  margin: 1rem;
+  padding: .7rem;
+  scale: 1.3;
+  color: #e7e7e7;
+  transition: .5s;
+}
+header span:hover{
+  scale: 1.7;
+  color: #F26202;
 }
 main{
     height: 80vh;
     display: flex;
     align-items: center;
-    background: #363636;
 }
 footer{
   height: 10vh;
-  background: black;
 }
 #container_cadastro{
   width: 500px;
@@ -81,6 +95,24 @@ form{
   font-size: 13px;
   margin-top: 0;
   color: #ff8018;
+}
+#footer_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+#termos_subcontainer{
+  font-size: 0.7rem;
+}
+#termos_subcontainer a{
+  cursor: pointer;
+  text-decoration: underline;
+  color: #ff8018;
+  transition: .5s;
+}
+#termos_subcontainer a:hover{
+  color: #c75000;
 }
 #btnSubmit{
   margin-top: 1rem;

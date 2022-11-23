@@ -1,11 +1,13 @@
-
 import express from 'express';
-const routes = express.Router();
+import {usuarioController} from './src/Controllers/usuarioController.js';
 
-routes.get("/", async (req, res) => {
-    return res.status(200).json({
-        msg : "Running route!!"
-    })
-});
+const routes = express.Router()
 
-export { routes }
+routes.get('/usuario/get', usuarioController.getUser)
+routes.post('/usuario/insert', usuarioController.insertUser)
+//routes.put('/usuario/update/:userID', usuarioController.updateUser)
+routes.delete('/usuario/delete/:id_usuario', usuarioController.deleteUser)
+routes.post('/usuario/login', usuarioController.loginUser)
+routes.post('/usuario/getProfile', usuarioController.getUserProfile)
+
+export default routes;

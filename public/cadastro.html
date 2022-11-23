@@ -6,35 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pannet - Cadastre sua conta</title>
     <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <header>
-
+        <nav>
+            <ul>
+                <li><a href="index.html"><span class="material-symbols-outlined">arrow_back</span></a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <div id="container_cadastro">
             <div id="header_cadastro">
                 <h3>Fazer Cadastro</h3>
             </div>
-            <form action="">
+            <form action="#" method="get">
                 <div class="label-float">
-                    <input type="text" name="nickname" placeholder="Insira seu nickname">
+                    <input type="text" name="nickname" placeholder="Nickname" id="nick">
                     <label for="nickname">Nickname</label>
                 </div>
                 <div class="label-float">
-                    <input type="Email" name="Email" placeholder="Insira seu email">
+                    <input type="Email" name="Email" placeholder="Email" id="email">
                     <label for="Email">Email</label>
                 </div>
                 <div class="label-float">
-                    <input type="password" name="Senha" placeholder="Insira sua senha">
+                    <input type="password" name="Senha" placeholder="Senha" id="senha">
                     <label for="Senha">Senha</label>
                 </div>
-                <input type="submit" value="Cadastrar" id="btnSubmit">
+                <div id="footer_container">
+                    <div id="termos_subcontainer">
+                        <input type="checkbox" name="termos_de_uso" id="ckbTermosUso">
+                        <label for="termos_de_uso">Ao realizar o cadastro você concorda com os <a>Termos de Uso</a></label>
+                    </div>
+                    <input type="submit" value="Cadastrar" onclick="cadastrar()" id="btnSubmit">
+                </div>
             </form>
         </div>
     </main>
-    <footer>
+    <script type="text/javascript">
+        
+        import Axios from 'axios';
+        import routes from '../server/routes';
 
-    </footer>
+        var nick = document.querySelector('#nome').value;
+        var email = document.querySelector('#senha').value;
+        var senha = document.querySelector('#senha').value;
+
+        function cadastrar(){
+            event.preventDefault();
+            Axios.post("http://localhost:3000/usuario/insert",{
+            "id_usuario": "",
+            "nick": nick,
+            "email": email,
+            "senha": senha,
+            "img_perfil": "",
+            "data_insert": "0",
+            "data_update": "0",
+            "status": "1"
+            });
+        }
+    
+    </script>
 </body>
 </html>

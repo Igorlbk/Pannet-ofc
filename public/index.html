@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.3/socket.io.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-    <title>Pannet - Conect-se com seus amigos!</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.3/socket.io.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <title>Pannet - Conecte-se com seus amigos!</title>
 </head>
 <body>
   <div class="root">
     <header id="header">
-      <a href=""><img src="./imagens/logo.png" alt="Logo Panda Vermelho" id="logo"></a>
+      <a href="" id="container_logo">
+        <img src="./imagens/logo.png" alt="Logo Panda Vermelho" id="logo">
+        <h1>Pannet</h1>
+      </a>
       <nav id="nav">
         <button aria-label="Abrir menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expanded="false"><span id="hamburguer"></span></button>
         <ul id="menu" role="menu">
-          <li><a href="#">Bate-Papo</a></li>
-          <li><a href="#">Modo Claro</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
           <li>
             <a href="#" id="modal-login">
               <div id="container_usuario">
                 <img src="./imagens/perfil.svg" alt="foto de perfil" id="user_img">
-                <span id="user_nick">Username</span>
+                <span id="user_nick">Fazer Login</span>
               </div>
             </a>
           </li>
         </ul>   
       </nav>
-      <div id="fade" class="hide"></div>
-      <div id="modal" class="hide">
-        <div id="header_modal">
+      <div id="fadeLogin" class="hide fade"></div>
+      <div id="modalLogin" class="hide">
+        <div class="header_modal">
           <h3>Fazer Login</h3>
-          <button id="fechar-modal-login"><span class="material-symbols-outlined">close</span></button>
+          <button id="fechar-modal-login"><span class="material-symbols-outlined fechar-modal">close</span></button>
         </div>
         <form>
           <div class="label-float">
@@ -47,8 +46,8 @@
             <input name="senha" type="password" placeholder="Insira sua Senha"/>
             <label for="senha">Senha</label>
           </div>
-          <input type="submit" value="Fazer Login" id="btnLogin">
-          <div id="footer_modal">
+          <input type="submit" value="Fazer Login" class="btnModal">
+          <div class="footer_modal">
             <p>Ainda não possui uma conta? <a href="cadastro.html">Registre-se</a>.</p>
           </div>
         </form>
@@ -59,23 +58,102 @@
           <label for="busca" id="lblBusca">Buscar</label>
           <div id="container_pesquisa">
             <form>
-              <input type="search" id="busca" name="q">
+              <input type="text" id="busca" name="q" autocomplete="off">
               <button type="submit" id="botao_pesquisa"><span class="material-symbols-outlined" id="icon_botao_pesquisa">search</span></button>
             </form>
+            <div id="fadeSala" class="hide fade"></div>
+            <div id="modalSala" class="hide">
+              <div class="header_modal">
+                <h3>Criar sala</h3>
+                <button id="fechar-modal-sala"><span class="material-symbols-outlined fechar-modal">close</span></button>
+              </div>
+              <form>
+                <div class="label-float">
+                  <input name="nomeSala" type="text" placeholder="Insira o nome da sala" autocomplete="none"/>
+                  <label for="nomeSala">Nome da sala</label>
+                </div>
+                <input type="submit" value="Criar sala" class="btnModal">
+                <div class="footer_modal">
+                </div>
+              </form>
+            </div>
+            <div id="subcontainer_pesquisa">
+              <button id="btn_criar_sala">Criar Sala</button>
+              <button id="btn_novo_amigo"><span class="material-symbols-outlined">person_add</span></button>
+            </div>
+            <div id="fadeNovoAmigo" class="hide fade"></div>
+            <div id="modalNovoAmigo" class="hide">
+              <div class="header_modal">
+                <h3>Novo amigo</h3>
+                <button id="fechar-modal-novoAmigo"><span class="material-symbols-outlined fechar-modal">close</span></button>
+              </div>
+              <div id="main_modal_container">
+                <form>
+                  <div class="label-float">
+                    <input name="novoAmigo" type="text" placeholder="Pesquisar pela ID" autocomplete="none"/>
+                    <label for="novoAmigo">Pesquisar pela ID</label>
+                  </div>
+                </form>
+                <input type="submit" value="Enviar Pedido" class="btnModal">
+              </div>
+            </div>
           </div>
         <div id="conversas">
           
         </div>
       </div>
       <div id="chat">
-        <div id="container_pesquisa">  
-          <label for="mensagem" id="lblMensagem">Mensagem</label>
-          <input type="text" id="enviar_mensagem" name="mensagem">
-          <button type="submit" id="botao_mensagem"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+        <div id="container_msg">
+
         </div>
+        <form id="form_chat" runat="server">
+          <label for="mensagem" id="lblMensagem">Mensagem</label>
+          <input type="text" id="txt_msg" name="mensagem" autocomplete="off" placeholder="Mensagem">
+          <button type="submit" id="btn_msg"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+        </form>
       </div>
     </main>
   </div>
-  <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+  <script src="animacao.js"></script>
+  <script type="text/javascript">
+    var socket = io('http://localhost:3000');
+
+    socket.on('previousMessages', function(messages){
+      for(message of messages){
+        renderizarMsg(message);
+      }
+    })
+    socket.on('receivedMessage', function(message){
+      renderizarMsg(message);
+    })
+    function renderizarMsg(mensagem) {
+      $('#container_msg').append('<div class="msgRederizada"><p>'+mensagem.mensagem+'<p></div>');
+    }
+    function renderizarSalas(salas) {
+      $('#conversas').append('<div class="salaRenderizada"><p>'+salas.nome+'</p></div>');
+    }
+
+        $('#form_chat').submit(function(event){
+          event.preventDefault();
+
+          var mensagem = $('input[name=mensagem]').val();
+          var horario = new Date();
+          var h_m_s = horario.getHours().toString();
+          h_m_s.concat(":" + horario.getMinutes().toString() + ":" + horario.getSeconds().toString());
+
+          if(mensagem.length){
+            var objMensagem = {
+              mensagem : mensagem,
+              horario : horario,
+            };
+
+            renderizarMsg(objMensagem);
+
+            socket.emit('sendMessage', objMensagem);
+          }
+        });
+  </script>
 </body>
 </html>
