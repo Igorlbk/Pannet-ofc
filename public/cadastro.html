@@ -44,29 +44,6 @@
             </form>
         </div>
     </main>
-    <script type="text/javascript">
-        
-        import Axios from 'axios';
-        import routes from '../server/routes';
 
-        var nick = document.querySelector('#nome').value;
-        var email = document.querySelector('#senha').value;
-        var senha = document.querySelector('#senha').value;
-
-        function cadastrar(){
-            event.preventDefault();
-            Axios.post("http://localhost:3000/usuario/insert",{
-            "id_usuario": "",
-            "nick": nick,
-            "email": email,
-            "senha": senha,
-            "img_perfil": "",
-            "data_insert": "0",
-            "data_update": "0",
-            "status": "1"
-            });
-        }
-    
-    </script>
 </body>
 </html>
