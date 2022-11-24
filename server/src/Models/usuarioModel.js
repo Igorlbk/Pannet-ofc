@@ -3,7 +3,12 @@ import { poolConnection } from "../../poolConnect.js";
 const Connection = await poolConnection()
 
 export class usuario{
-    constructor(nick, email, senha, img_perfil, data_insert, data_update, status, id_usuario){
+    constructor(id_usuario, nick, email, senha, img_perfil, data_insert, data_update, status){
+        if(id_usuario == '' || id_usuario == null || id_usuario == undefined){
+            this.id_usuario = ''
+        }else{
+            this.id_usuario = id_usuario
+        }
         if(nick == '' || nick == null || nick == undefined){
             this.nick = ''
         }else{
@@ -44,11 +49,6 @@ export class usuario{
             this.status = 1
         }else{
             this.status = 1
-        }
-        if(id_usuario == '' || id_usuario == null || id_usuario == undefined){
-            this.id_usuario = ''
-        }else{
-            this.id_usuario = id_usuario
         }
     }
 
